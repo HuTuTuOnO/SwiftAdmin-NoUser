@@ -1,17 +1,17 @@
 /*
- Navicat Premium Data Transfer
+ Navicat Premium Dump SQL
 
- Source Server         : localhost_3306
+ Source Server         : file_vmssr_co
  Source Server Type    : MySQL
- Source Server Version : 50738
- Source Host           : localhost:3306
- Source Schema         : think
+ Source Server Version : 50744 (5.7.44-log)
+ Source Host           : 154.13.6.14:3306
+ Source Schema         : file_vmssr_co
 
  Target Server Type    : MySQL
- Target Server Version : 50738
+ Target Server Version : 50744 (5.7.44-log)
  File Encoding         : 65001
 
- Date: 20/11/2023 11:13:29
+ Date: 14/09/2024 15:24:51
 */
 
 SET NAMES utf8mb4;
@@ -56,7 +56,7 @@ CREATE TABLE `__PREFIX__admin`  (
 -- ----------------------------
 -- Records of __PREFIX__admin
 -- ----------------------------
-INSERT INTO `__PREFIX__admin` VALUES (1, '1,2', '2', '3', 'admin', '管理员', '13682bec405cf4b9002e6e8306312ce6', 1, 'a:2:{i:0;s:12:\"代码狂人\";i:1;s:15:\"隔壁帅小伙\";}', '/static/images/avatar/master.jpg', '海阔天空，有容乃大', 'admin@swiftadmin.net', '0310', '15188888888', '高级管理人员', 296, '河北省邯郸市', '127.0.0.1', 1700449436, '127.0.0.1', 1, NULL, 1596682835, 1700449436, NULL);
+INSERT INTO `__PREFIX__admin` VALUES (1, '1,3', '2', '3', 'admin', '管理员', '13682bec405cf4b9002e6e8306312ce6', 1, 'a:2:{i:0;s:12:\"代码狂人\";i:1;s:15:\"隔壁帅小伙\";}', '/static/images/avatar/master.jpg', '海阔天空，有容乃大', 'admin@swiftadmin.net', '0310', '15188888888', '高级管理人员', 297, '河北省邯郸市', '141.11.87.57', 1726232205, '127.0.0.1', 1, NULL, 1596682835, 1726248479, NULL);
 
 -- ----------------------------
 -- Table structure for __PREFIX__admin_access
@@ -75,8 +75,7 @@ CREATE TABLE `__PREFIX__admin_access`  (
 -- ----------------------------
 -- Records of __PREFIX__admin_access
 -- ----------------------------
-INSERT INTO `__PREFIX__admin_access` VALUES (1, '1,2', '124,185,186,187,188,189,155,180,182,183,184', NULL);
-INSERT INTO `__PREFIX__admin_access` VALUES (2, '2', '338,6,7,8,9,10,11,18,19,20,21,22,23,336,345,346,347,348,349,337,340,341,342,343,344,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,61,62,64,65,66,67,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,309', '');
+INSERT INTO `__PREFIX__admin_access` VALUES (1, '1', '', NULL);
 
 -- ----------------------------
 -- Table structure for __PREFIX__admin_group
@@ -97,13 +96,12 @@ CREATE TABLE `__PREFIX__admin_group`  (
   `create_time` int(11) NULL DEFAULT NULL,
   `delete_time` int(11) NULL DEFAULT NULL COMMENT '软删除标识',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户组表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户组表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of __PREFIX__admin_group
 -- ----------------------------
-INSERT INTO `__PREFIX__admin_group` VALUES (1, 0, 1, '超级管理员', 'admin', 1, 1, '网站超级管理员组的', '31,32,34,35,36', NULL, 'layui-bg-blue', 1607832158, NULL);
-INSERT INTO `__PREFIX__admin_group` VALUES (2, 1, 2, '网站编辑', 'editor', 1, 1, '负责公司软文的编写', '5,11,12,13,14,15,16,17,18,19,20,21,28,31,32', '2', 'layui-bg-cyan', 1607832158, NULL);
+INSERT INTO `__PREFIX__admin_group` VALUES (1, 0, 1, '超级管理员', 'admin', 1, 1, '网站超级管理员组的', '1,2,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89', NULL, 'layui-bg-blue', 1607832158, NULL);
 
 -- ----------------------------
 -- Table structure for __PREFIX__admin_log
@@ -123,11 +121,12 @@ CREATE TABLE `__PREFIX__admin_log`  (
   `create_time` int(11) NULL DEFAULT NULL COMMENT '登录时间',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_ip`(`user_ip`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户登录记录表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户登录记录表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of __PREFIX__admin_log
 -- ----------------------------
+INSERT INTO `__PREFIX__admin_log` VALUES (1, 'admin', '管理员', '141.11.87.57', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36', 'Windows NT 10.0', 'Chrome/128.0.0.0 Safari/537.36', 1, '登录成功', 1726232205, 1726232205);
 
 -- ----------------------------
 -- Table structure for __PREFIX__admin_notice
@@ -187,11 +186,9 @@ CREATE TABLE `__PREFIX__admin_rules`  (
 -- ----------------------------
 -- Records of __PREFIX__admin_rules
 -- ----------------------------
-INSERT INTO `__PREFIX__admin_rules` VALUES (1, 0, 'Dashboard', 'Dashboard', 'ashboard', 0, '', '', 1, 'layui-icon-home', 0, 'normal', 0, 1688481042, 1688481042, NULL);
+INSERT INTO `__PREFIX__admin_rules` VALUES (1, 0, 'Dashboard', 'Dashboard', 'dashboard', 0, '', '', 1, 'layui-icon-home', 0, 'normal', 0, 1688481042, 1688481042, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (2, 1, '控制台', '/index/console', 'index:console', 0, '', '', 2, '', 0, 'normal', 0, 1688481042, 1688481042, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (3, 1, '分析页', '/index/analysis', 'index:analysis', 0, '', '', 3, '', 0, 'normal', 0, 1688481042, 1688481042, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (4, 1, '监控页', '/index/monitor', 'index:monitor', 0, '', '', 4, '', 0, 'normal', 0, 1688481042, 1688481042, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (5, 0, '系统管理', 'System', 'ystem', 0, '', '', 5, 'layui-icon-set-fill', 1, 'normal', 0, 1700303729, 1688481042, NULL);
+INSERT INTO `__PREFIX__admin_rules` VALUES (5, 0, '系统管理', 'System', 'system', 0, '', '', 5, 'layui-icon-set-fill', 1, 'normal', 0, 1700303729, 1688481042, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (6, 5, '基本设置', '/Index/baseCfg', 'Index:baseCfg', 0, '', '', 6, '', 1, 'normal', 0, 1688481042, 1688481042, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (7, 6, '修改配置', '/Index/baseSet', 'Index:baseSet', 2, '', '', 7, '', 1, 'normal', 0, 1688481042, 1688481042, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (8, 6, 'FTP接口', '/Index/testFtp', 'Index:testFtp', 2, '', '', 8, '', 0, 'normal', 0, 1688481042, 1688481042, NULL);
@@ -240,7 +237,7 @@ INSERT INTO `__PREFIX__admin_rules` VALUES (50, 45, '状态', '/system.AdminRule
 INSERT INTO `__PREFIX__admin_rules` VALUES (51, 5, '操作日志', '/system.SystemLog/index', 'system.SystemLog:index', 0, '', '', 51, '', 1, 'normal', 0, 1688481044, 1688481044, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (52, 51, '查询', '/system.SystemLog/index', 'system.SystemLog:index', 1, '', '', 52, '', 1, 'normal', 0, 1688481044, 1688481044, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (53, 5, '登录日志', '/system.AdminLog/index', 'system.AdminLog:index', 0, '', '', 53, '', 0, 'normal', 0, 1688481044, 1688481044, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (54, 0, '高级管理', 'Management', 'anagement', 0, '', '', 54, 'layui-icon-engine', 1, 'normal', 0, 1688481044, 1688481044, NULL);
+INSERT INTO `__PREFIX__admin_rules` VALUES (54, 0, '高级管理', 'Management', 'management', 0, '', '', 54, 'layui-icon-engine', 1, 'normal', 0, 1688481044, 1688481044, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (55, 54, '公司管理', '/system.Company/index', 'system.Company:index', 0, '', '', 55, '', 1, 'normal', 0, 1688481045, 1688481045, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (56, 55, '查看', '/system.Company/index', 'system.Company:index', 1, '', '', 56, '', 1, 'normal', 0, 1688481045, 1688481045, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (57, 55, '添加', '/system.Company/add', 'system.Company:add', 1, '', '', 57, '', 1, 'normal', 0, 1688481045, 1688481045, NULL);
@@ -276,19 +273,6 @@ INSERT INTO `__PREFIX__admin_rules` VALUES (86, 85, '查看统计', '/system.Spi
 INSERT INTO `__PREFIX__admin_rules` VALUES (87, 85, '爬虫日志', '/system.Spider/getSpiderLog', 'system.Spider:getSpiderLog', 1, '', '', 87, '', 1, 'normal', 0, 1688481046, 1688481046, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (88, 85, '爬虫详情', '/system.Spider/getSpiderDetail', 'system.Spider:getSpiderDetail', 2, '', '', 88, '', 1, 'normal', 0, 1688481046, 1688481046, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (89, 85, '小时统计', '/system.Spider/hours', 'system.Spider:hours', 2, '', '', 89, '', 1, 'normal', 0, 1688481046, 1688481046, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (90, 0, '会员管理', 'User', 'ser', 0, '', '', 90, 'layui-icon-user', 1, 'normal', 0, 1688481046, 1688481046, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (91, 90, '会员管理', '/system.User/index', 'system.User:index', 0, '', '', 91, '', 1, 'normal', 0, 1688481047, 1688481047, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (92, 91, '查看', '/system.User/index', 'system.User:index', 1, '', '', 92, '', 1, 'normal', 0, 1688481047, 1688481047, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (93, 91, '添加', '/system.User/add', 'system.User:add', 1, '', '', 93, '', 1, 'normal', 0, 1688481047, 1688481047, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (94, 91, '编辑', '/system.User/edit', 'system.User:edit', 1, '', '', 94, '', 1, 'normal', 0, 1688481047, 1688481047, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (95, 91, '删除', '/system.User/del', 'system.User:del', 1, '', '', 95, '', 1, 'normal', 0, 1688481047, 1688481047, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (96, 91, '状态', '/system.User/status', 'system.User:status', 2, '', '', 96, '', 1, 'normal', 0, 1688481047, 1688481047, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (97, 90, '会员组管理', '/system.UserGroup/index', 'system.UserGroup:index', 0, '', '', 97, '', 1, 'normal', 0, 1688481047, 1688481047, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (98, 97, '查看', '/system.UserGroup/index', 'system.UserGroup:index', 1, '', '', 98, '', 1, 'normal', 0, 1688481047, 1688481047, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (99, 97, '添加', '/system.UserGroup/add', 'system.UserGroup:add', 1, '', '', 99, '', 1, 'normal', 0, 1688481047, 1688481047, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (100, 97, '编辑', '/system.UserGroup/edit', 'system.UserGroup:edit', 1, '', '', 100, '', 1, 'normal', 0, 1688481047, 1688481047, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (101, 97, '删除', '/system.UserGroup/del', 'system.UserGroup:del', 1, '', '', 101, '', 1, 'normal', 0, 1688481047, 1688481047, NULL);
-INSERT INTO `__PREFIX__admin_rules` VALUES (102, 97, '状态', '/system.UserGroup/status', 'system.UserGroup:status', 2, '', '', 102, '', 1, 'normal', 0, 1688481047, 1688481047, NULL);
 
 -- ----------------------------
 -- Table structure for __PREFIX__attachment
@@ -426,23 +410,6 @@ INSERT INTO `__PREFIX__config` VALUES (63, 'smstype', 0, NULL, 'string', 'tensms
 INSERT INTO `__PREFIX__config` VALUES (64, 'alisms', 0, NULL, 'array', '{\"app_id\":\"cn-hangzhou\",\"app_sign\":\"\",\"access_id\":\"\",\"access_secret\":\"\"}', '阿里云短信');
 INSERT INTO `__PREFIX__config` VALUES (65, 'tensms', 0, NULL, 'array', '{\"app_id\":\"\",\"app_sign\":\"\",\"secret_id\":\"\",\"secret_key\":\"\"}', '腾讯云短信');
 INSERT INTO `__PREFIX__config` VALUES (66, 'mpwechat', 0, NULL, 'array', '{\"app_id\":\"\",\"secret\":\"\",\"token\":\"\",\"aes_key\":\"\"}', '微信公众号');
-INSERT INTO `__PREFIX__config` VALUES (67, 'user_status', 0, 'user', 'string', '1', '注册状态');
-INSERT INTO `__PREFIX__config` VALUES (68, 'user_register_style', 0, 'user', 'string', 'normal', '注册方式');
-INSERT INTO `__PREFIX__config` VALUES (69, 'user_document', 0, 'user', 'string', '1', '用户投稿');
-INSERT INTO `__PREFIX__config` VALUES (70, 'user_sensitive', 0, 'user', 'string', '1', '开启违禁词检测');
-INSERT INTO `__PREFIX__config` VALUES (71, 'user_document_integra', 0, 'user', 'string', '1', '投稿获得积分');
-INSERT INTO `__PREFIX__config` VALUES (72, 'user_valitime', 0, 'user', 'string', '10', '激活码有效期');
-INSERT INTO `__PREFIX__config` VALUES (73, 'user_register_second', 0, 'user', 'string', '10', '每日注册');
-INSERT INTO `__PREFIX__config` VALUES (74, 'user_login_integra', 0, 'user', 'string', '1', '登录获得积分');
-INSERT INTO `__PREFIX__config` VALUES (75, 'user_spread_integra', 0, 'user', 'string', '1', '推广获得积分');
-INSERT INTO `__PREFIX__config` VALUES (76, 'user_search_interval', 0, 'user', 'string', '1', '用户搜索间隔');
-INSERT INTO `__PREFIX__config` VALUES (77, 'user_reg_notallow', 0, 'user', 'string', 'www,bbs,ftp,mail,user,users,admin,administrator', '禁止注册');
-INSERT INTO `__PREFIX__config` VALUES (78, 'user_form_status', 0, 'user', 'string', '1', '评论开关');
-INSERT INTO `__PREFIX__config` VALUES (79, 'user_form_check', 0, 'user', 'string', '1', '评论审核');
-INSERT INTO `__PREFIX__config` VALUES (80, 'user_isLogin', 0, 'user', 'string', '1', '游客评论');
-INSERT INTO `__PREFIX__config` VALUES (81, 'user_anonymous', 0, 'user', 'string', '0', '匿名评论');
-INSERT INTO `__PREFIX__config` VALUES (82, 'user_form_second', 0, 'user', 'string', '10', '最大注册');
-INSERT INTO `__PREFIX__config` VALUES (83, 'user_replace', 0, 'user', 'string', '她妈|它妈|他妈|你妈|去死|贱人', '过滤字符');
 INSERT INTO `__PREFIX__config` VALUES (84, 'sitemap', 0, NULL, 'array', '', '地图配置');
 INSERT INTO `__PREFIX__config` VALUES (85, 'rewrite', 0, NULL, 'string', '', 'URL配置');
 INSERT INTO `__PREFIX__config` VALUES (86, 'database', 0, NULL, 'string', '', '数据库维护');
@@ -572,234 +539,10 @@ CREATE TABLE `__PREFIX__system_log`  (
   `status` int(11) NULL DEFAULT 1 COMMENT '执行状态',
   `create_time` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统日志表' ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统日志表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of __PREFIX__system_log
--- ----------------------------
-
--- ----------------------------
--- Table structure for __PREFIX__user
--- ----------------------------
-DROP TABLE IF EXISTS `__PREFIX__user`;
-CREATE TABLE `__PREFIX__user`  (
-  `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `group_id` smallint(5) UNSIGNED NOT NULL DEFAULT 1 COMMENT '组id',
-  `nickname` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户昵称',
-  `pwd` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '密码',
-  `salt` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '密码盐',
-  `qq` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'QQ',
-  `wechat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '微信号',
-  `alipay` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '支付宝账号',
-  `avatar` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '头像',
-  `heart` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '这个人很懒，什么都没有留下～ ' COMMENT '用户心情',
-  `email` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT 'emain',
-  `mobile` bigint(20) NULL DEFAULT NULL COMMENT '手机号',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '真实姓名',
-  `idCard` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '身份证号',
-  `prove` int(1) UNSIGNED NULL DEFAULT 0 COMMENT '实名认证',
-  `prove_time` datetime NULL DEFAULT NULL COMMENT '认证时间',
-  `address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '家庭住址',
-  `modify_name` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '修改次数',
-  `money` decimal(10, 2) NULL DEFAULT 0.00 COMMENT '余额',
-  `score` mediumint(8) UNSIGNED NULL DEFAULT 0 COMMENT '积分',
-  `question` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '密保问题',
-  `answer` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '答案',
-  `gender` int(11) UNSIGNED NULL DEFAULT 1 COMMENT '性别',
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '状态',
-  `reward` decimal(10, 2) NULL DEFAULT 0.80 COMMENT '折扣比例',
-  `app_id` int(11) NULL DEFAULT NULL COMMENT '用户appid',
-  `app_secret` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '用户appsecret',
-  `hits` mediumint(8) UNSIGNED NULL DEFAULT NULL COMMENT '点击量',
-  `hits_day` mediumint(8) UNSIGNED NULL DEFAULT NULL COMMENT '日点击',
-  `hits_week` mediumint(8) UNSIGNED NULL DEFAULT NULL COMMENT '周点击',
-  `hits_month` mediumint(8) UNSIGNED NULL DEFAULT NULL COMMENT '月点击',
-  `hits_lasttime` int(11) NULL DEFAULT NULL COMMENT '点击时间',
-  `invite_id` int(11) NULL DEFAULT NULL COMMENT '邀请人',
-  `valicode` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '激活码',
-  `login_ip` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '登录ip',
-  `login_time` int(11) NULL DEFAULT NULL COMMENT '登录时间',
-  `login_count` smallint(6) NULL DEFAULT 1 COMMENT '登录次数',
-  `url` varchar(1) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '获取用户地址 占位',
-  `create_ip` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '注册IP',
-  `create_time` int(11) NULL DEFAULT NULL COMMENT '注册时间',
-  `delete_time` int(11) NULL DEFAULT NULL COMMENT '软删除标识',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `id`(`id`) USING BTREE,
-  INDEX `group_id`(`group_id`, `status`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '会员管理' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of __PREFIX__user
--- ----------------------------
-INSERT INTO `__PREFIX__user` VALUES (1, 1, 'admin', '513bd12b00b512d0b879962b777b5560', 'wdONQC', '123456', 'fengzheng', NULL, '/upload/avatars/2022-06-30/62bd24e2af8a0.png?QPdXwuRDtAZN', '官方原版插件，商用首选！❤️', 'test@swiftadmin.net', 15112338819, NULL, NULL, NULL, NULL, '', 0, 90.85, 150, '你的幸运数字是？', '21', 1, 1, 1.00, 10001, 'JNbkHePGncKimuUDyBhYZA', 88, 1, 1, 4, 1637058931, NULL, NULL, '127.0.0.1', 1691073216, 309, NULL, '2130706433', 1597125391, NULL);
-
--- ----------------------------
--- Table structure for __PREFIX__user_group
--- ----------------------------
-DROP TABLE IF EXISTS `__PREFIX__user_group`;
-CREATE TABLE `__PREFIX__user_group`  (
-  `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `title` char(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '会员组名',
-  `alias` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '会员标识',
-  `score` int(11) NULL DEFAULT NULL COMMENT '会员组积分',
-  `pay` int(1) UNSIGNED NULL DEFAULT 0 COMMENT '是否可购买',
-  `price` decimal(10, 2) UNSIGNED NULL DEFAULT 0.00 COMMENT '购买价格',
-  `upgrade` int(1) NULL DEFAULT NULL COMMENT '是否自动升级',
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '会员组状态',
-  `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '会员组说明',
-  `expire_time` int(11) UNSIGNED NULL DEFAULT 0 COMMENT '组过期时间',
-  `create_time` int(11) NULL DEFAULT NULL COMMENT '创建时间',
-  `delete_time` int(11) NULL DEFAULT NULL COMMENT '软删除标识',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '会员组管理' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of __PREFIX__user_group
--- ----------------------------
-INSERT INTO `__PREFIX__user_group` VALUES (1, '初级会员', 'v1', 10, 0, 0.00, 1, 1, '新注册会员', 0, 1649039829, NULL);
-INSERT INTO `__PREFIX__user_group` VALUES (2, '中级会员', 'v2', 100, 0, 0.00, 1, 1, '活跃会员', 0, 1649039829, NULL);
-INSERT INTO `__PREFIX__user_group` VALUES (3, '高级会员', 'VIP', 500, 1, 0.00, 1, 1, '高级会员', 0, 1649039829, NULL);
-INSERT INTO `__PREFIX__user_group` VALUES (4, '超级会员', 'SVIP', 2000, 1, 0.00, 1, 1, '超神会员', 0, 1649039829, NULL);
-
--- ----------------------------
--- Table structure for __PREFIX__user_log
--- ----------------------------
-DROP TABLE IF EXISTS `__PREFIX__user_log`;
-CREATE TABLE `__PREFIX__user_log`  (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '访问ID',
-  `nickname` varchar(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '用户帐号',
-  `login_id` int(11) NULL DEFAULT NULL COMMENT '用户ID',
-  `login_ip` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '用户IP',
-  `login_agent` varchar(512) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '浏览器 UA',
-  `login_os` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '操作系统',
-  `login_browser` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '浏览器',
-  `status` int(1) NULL DEFAULT 0 COMMENT '登录状态',
-  `error` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '错误信息',
-  `create_time` int(11) NULL DEFAULT NULL COMMENT '登录时间',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_ip`(`login_ip`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '用户登录记录表' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of __PREFIX__user_log
--- ----------------------------
-INSERT INTO `__PREFIX__user_log` VALUES (1, 'admin', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.5735.289 Safari/537.36', 'Windows NT 10.0', 'Chrome/114.0.5735.289 Safari/537.36', 0, '用户名或密码错误', 1697865511);
-
--- ----------------------------
--- Table structure for __PREFIX__user_money_log
--- ----------------------------
-DROP TABLE IF EXISTS `__PREFIX__user_money_log`;
-CREATE TABLE `__PREFIX__user_money_log`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '会员ID',
-  `money` decimal(10, 2) NOT NULL DEFAULT 0.00 COMMENT '变更余额',
-  `before` decimal(10, 2) NOT NULL DEFAULT 0.00 COMMENT '变更前余额',
-  `after` decimal(10, 2) NOT NULL DEFAULT 0.00 COMMENT '变更后余额',
-  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '备注',
-  `type` enum('pay','groups','recharge','withdraw','refund','sys') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT 'sys' COMMENT '业务类型:pay=商品交易,groups=拼团,recharge=充值,withdraw=提现,refund=退款,sys=系统业务',
-  `service_ids` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '业务ID',
-  `create_time` int(10) NULL DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '会员余额记录表' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of __PREFIX__user_money_log
--- ----------------------------
-INSERT INTO `__PREFIX__user_money_log` VALUES (1, 1, -10.00, 90.85, 80.85, '提现申请', 'sys', '', 1690625177);
-INSERT INTO `__PREFIX__user_money_log` VALUES (2, 1, 10.00, 80.85, 90.85, '提现申请被驳回', 'sys', '', 1690625182);
-
--- ----------------------------
--- Table structure for __PREFIX__user_notice
--- ----------------------------
-DROP TABLE IF EXISTS `__PREFIX__user_notice`;
-CREATE TABLE `__PREFIX__user_notice`  (
-  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `type` enum('系统','会员') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '系统' COMMENT '消息类型',
-  `user_id` int(11) NOT NULL COMMENT '用户ID',
-  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '消息标题',
-  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '消息内容',
-  `send_id` int(11) UNSIGNED NULL DEFAULT 0 COMMENT '发送者ID',
-  `send_ip` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '10.10.11.22' COMMENT '发送者IP地址',
-  `is_system` int(1) UNSIGNED NOT NULL DEFAULT 1 COMMENT '系统消息',
-  `push` int(1) UNSIGNED NULL DEFAULT 0 COMMENT '推送状态',
-  `status` int(1) UNSIGNED NULL DEFAULT 0 COMMENT '消息状态',
-  `create_time` int(11) NULL DEFAULT NULL COMMENT '创建时间',
-  `delete_time` int(11) NULL DEFAULT NULL COMMENT '软删除标识',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `id`(`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '工单数据表' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of __PREFIX__user_notice
--- ----------------------------
-INSERT INTO `__PREFIX__user_notice` VALUES (1, '系统', 1, '一条消息哦', '在这里是内容', 1, '10.10.11.22', 1, 0, 1, 1669521003, NULL);
-INSERT INTO `__PREFIX__user_notice` VALUES (2, '系统', 1, '提现申请已被拒绝', '您提现的 ￥100.00 申请已被拒绝', 0, '10.10.11.22', 1, 0, 1, 1688805655, NULL);
-
--- ----------------------------
--- Table structure for __PREFIX__user_score_log
--- ----------------------------
-DROP TABLE IF EXISTS `__PREFIX__user_score_log`;
-CREATE TABLE `__PREFIX__user_score_log`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '会员ID',
-  `score` int(10) NOT NULL DEFAULT 0 COMMENT '变更积分',
-  `before` int(10) NOT NULL DEFAULT 0 COMMENT '变更前积分',
-  `after` int(10) NOT NULL DEFAULT 0 COMMENT '变更后积分',
-  `note` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT '' COMMENT '备注',
-  `create_time` int(10) NULL DEFAULT NULL COMMENT '创建时间',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci COMMENT = '会员积分记录表' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of __PREFIX__user_score_log
--- ----------------------------
-
--- ----------------------------
--- Table structure for __PREFIX__user_third
--- ----------------------------
-DROP TABLE IF EXISTS `__PREFIX__user_third`;
-CREATE TABLE `__PREFIX__user_third`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `user_id` int(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '会员ID',
-  `type` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '登录类型',
-  `name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '第三方登录帐号',
-  `unionid` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '第三方UNIONID',
-  `openid` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '第三方OPENID',
-  `nickname` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '第三方会员昵称',
-  `access_token` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT 'AccessToken',
-  `refresh_token` varchar(120) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL,
-  `expires_in` int(10) UNSIGNED NULL DEFAULT 0 COMMENT '有效期',
-  `create_time` int(11) NULL DEFAULT NULL,
-  `update_time` int(11) NULL DEFAULT NULL,
-  `login_time` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '登录时间',
-  `expire_time` int(10) UNSIGNED NULL DEFAULT NULL COMMENT '过期时间',
-  PRIMARY KEY (`id`, `user_id`) USING BTREE,
-  INDEX `user_id`(`user_id`, `type`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '第三方登录表' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of __PREFIX__user_third
--- ----------------------------
-
--- ----------------------------
--- Table structure for __PREFIX__user_validate
--- ----------------------------
-DROP TABLE IF EXISTS `__PREFIX__user_validate`;
-CREATE TABLE `__PREFIX__user_validate`  (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `email` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '邮箱',
-  `mobile` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '手机号',
-  `code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '验证码',
-  `event` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '事务类型',
-  `status` int(11) UNSIGNED NULL DEFAULT 1 COMMENT '验证码状态',
-  `create_time` int(11) NULL DEFAULT NULL,
-  `delete_time` int(11) NULL DEFAULT NULL COMMENT '软删除标识',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '用户验证码表' ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of __PREFIX__user_validate
 -- ----------------------------
 
 SET FOREIGN_KEY_CHECKS = 1;

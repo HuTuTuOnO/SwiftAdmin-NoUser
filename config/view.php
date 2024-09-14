@@ -25,10 +25,6 @@ return [
     // 预先加载的标签库
     'taglib_pre_load'    => 'app\common\taglib\Salibs',
     'tpl_replace_string' => [
-        '__STATIC__'       => '/static/',
-        '__STATICJS__'     => '/static/js/',
-        '__STATICCSS__'    => '/static/css/',
-        '__STATICIMAGES__' => '/static/images/',
         '__STATICADMIN__'  => '/static/system/',
         '__ADMINIMAGES__'  => '/static/system/images/',
         '__ADMINPLUGIN__'  => '/static/system/plugin/',
