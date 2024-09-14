@@ -1,0 +1,474 @@
+<include file="/public/header"/>
+<script src="__STATICADMIN__module/echarts/echarts.js?console"></script>
+<style>
+
+    .layui-row {
+        overflow: hidden;
+        margin-bottom: 10px;
+    }
+
+
+    .layui-table {
+        height: 250px;
+    }
+
+    .layui-table tr {
+        cursor: pointer;
+    }
+
+    .task .layui-table td {
+        white-space: nowrap;
+        max-width: 120px;
+    }
+
+    .layui-table[lay-skin="nob"] th, .layui-table[lay-skin="nob"] td {
+        white-space: nowrap;
+        max-width: 50px;
+        overflow: hidden;
+    }
+
+    ul.layui-timeline {
+        height: 260px;
+        overflow: hidden;
+    }
+
+    ul.layui-timeline:hover {
+        overflow-y: auto;
+    }
+
+    .layui-carousel {
+        height: 260px;
+    }
+
+    .layui-carousel > [carousel-item] > * {
+        background: 0 0;
+    }
+
+
+    .layui-carousel > [carousel-item]:before {
+        content: '';
+    }
+
+    /** 小组成员 */
+    .console-user-group {
+        position: relative;
+        padding: 10px 0 10px 60px;
+    }
+
+    .console-user-group .console-user-group-head {
+        width: 32px;
+        height: 32px;
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        margin-top: -16px;
+        border-radius: 50%;
+    }
+
+    .console-user-group .layui-badge {
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        margin-top: -10px;
+    }
+
+    .console-user-group .console-user-group-name {
+        line-height: 1.2;
+    }
+
+    .console-user-group .console-user-group-desc {
+        color: #8c8c8c;
+        line-height: 1;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    @media screen and (max-width: 1200px) {
+        .layui-admin-workplace {
+            margin: 0 8px 0px 1px;
+        }
+    }
+
+    .item_d {
+        width: 48%;
+        color: #666;
+        line-height: 25px;
+        display: inline-block;
+        padding: 5px 0;
+        background: #f8f8f8;
+        border-radius: 3px;
+        cursor: pointer;
+        margin: 6px 4px;
+    }
+
+    .item_d:hover {
+        background: #eee;
+    }
+
+    .item_d .item_ico {
+        height: 25px;
+        margin-left: 10px;
+    }
+
+    .item_d span.count {
+        color: #999;
+        margin-right: 10px;
+        float: right;
+    }
+
+    .spiderOrder {
+        margin-right: 10px;
+    }
+
+
+    .spiderOrder:hover, .active {
+        color: red;
+    }
+
+    .count {
+        font-weight: bold;
+        margin-left: 5px;
+    }
+
+</style>
+
+<div class="layui-fluid ">
+
+    <div class="layui-row layui-col-space10">
+
+        <div class="layui-col-md8">
+            <!-- 填充内容 -->
+            <div class="layui-card">
+                <div class="layui-card-body" style="padding: 20px;">
+                    <div class="layui-row">
+                        <div class="layui-col-md8">
+                            <img src="{$AdminLogin.face}" class="layui-admin-avatar">
+                            <div class="layui-admin-content">
+                                <span class="h4">早安，{$AdminLogin.nickname|default=$AdminLogin.name}，开始您一天的工作吧！</span>
+                                <span>今日多云转阴，18℃ - 22℃，出门记得穿外套哦~</span>
+                            </div>
+                        </div>
+                        <div class="layui-col-md4">
+                            <div class="layui-admin-workplace">
+                                <div class="workplace-header">
+                                    <span><i class="layui-icon layui-icon-list"></i>通知</span>
+                                </div>
+                                <div class="workplace-content">{$workplace.notice|default=26}</div>
+                            </div>
+
+                            <div class="layui-admin-workplace">
+                                <div class="workplace-header">
+                                    <span><i class="layui-icon layui-icon-date date"></i>待办项</span>
+                                </div>
+                                <div class="workplace-content">{$todoList}/{$workplace.todo}</div>
+                            </div>
+                            <div class="layui-admin-workplace">
+                                <div class="workplace-header">
+                                    <span><i class="layui-icon layui-icon-notice notice"></i>消息</span>
+                                </div>
+                                <div class="workplace-content">{$workplace.message|default="2,352"}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-body" style="padding: 20px;">
+                    <div style="height: 78px">
+                        <ul>
+                            <a href="javascript:;" class="workplace-action" sa-event="tabs"
+                               data-url="{:url('/system.Attachment/index')}"
+                               title="附件管理">附件管理</a>
+                            <a href="javascript:;" class="workplace-action" sa-event="tabs"
+                               data-url="{:url('/system.dictionary/index')}"
+                               title="字典管理">字典管理</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-row layui-col-space10" style="margin-bottom: 0;">
+
+        <div class="layui-col-md4">
+            <div class="layui-row layui-col-space10" style="margin-bottom: 5px;">
+                <div class="layui-col-xs6 layui-col-sm6">
+                    <div class="layui-card smallblock" sa-event="tabs" data-url="{:url('/system.Admin/center')}"
+                         data-title="{:__('用户中心')}">
+                        <div class="layui-card-body">
+                            <div class="layui-small-block">
+                                <div><i class="layui-icon layui-icon-user"></i></div>
+                                <div class="layui-small-block-title">用户</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs6 layui-col-sm6">
+                    <div class="layui-card smallblock" sa-event="tabs" data-url="{:url('/system.AdminNotice/index')}"
+                         data-title="{:__('消息中心')}">
+                        <div class="layui-card-body">
+                            <div class="layui-small-block">
+                                <div><i class="layui-icon layui-icon-chart " style="color: #b0e689"></i></div>
+                                <div class="layui-small-block-title">消息</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md4">
+            <div class="layui-row layui-col-space10" style="margin-bottom: 5px;">
+                <div class="layui-col-xs6 layui-col-sm6">
+                    <div class="layui-card smallblock" sa-event="tabs" data-url="{:url('/system.Attachment/index')}"
+                         data-title="{:__('附件管理')}">
+                        <div class="layui-card-body">
+                            <div class="layui-small-block">
+                                <div><i class="layui-icon layui-icon-chart-screen" style="color: #fe9c6e"></i></div>
+                                <div class="layui-small-block-title">附件</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs6 layui-col-sm6">
+                    <div class="layui-card smallblock" sa-event="tabs" data-url="{:url('/system.Dictionary/index')}"
+                         data-title="{:__('字典管理')}">
+                        <div class="layui-card-body">
+                            <div class="layui-small-block">
+                                <div><i class="layui-icon layui-icon-template-1" style="color: #b37eeb"></i></div>
+                                <div class="layui-small-block-title">字典</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md4">
+            <div class="layui-row layui-col-space10" style="margin-bottom: 5px;">
+                <div class="layui-col-xs6 layui-col-sm6">
+                    <div class="layui-card smallblock" sa-event="tabs" data-url="{:url('/system.SystemLog/index')}"
+                         data-title="{:__('操作日志')}">
+                        <div class="layui-card-body">
+                            <div class="layui-small-block">
+                                <div><i class="layui-icon layui-icon-list" style="color: #88e4de"></i></div>
+                                <div class="layui-small-block-title">日志</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-xs6 layui-col-sm6">
+                    <div class="layui-card smallblock" sa-event="tabs" data-url="{:url('/index/basecfg')}"
+                         data-title="{:__('基本设置')}">
+                        <div class="layui-card-body">
+                            <div class="layui-small-block">
+                                <div><i class="layui-icon layui-icon-set-sm" style="color: #ffc069"></i></div>
+                                <div class="layui-small-block-title">设置</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-row layui-col-space10">
+
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-header">今日蜘蛛统计</div>
+                <div style="height: 280px">
+                    <table style="width:100%;" >
+                        <tbody>
+                        <tr>
+                            <td colspan="2" style="padding: 10px;">
+                                <div class="inbox">
+                                    <div class="item_d">
+                                        <img src="/static/images/spider/BaiduSpider.ico" class="item_ico">
+                                        <span>百度</span>
+                                        <span class="count" id="BaiduSpider">{$spiderLogCount.BaiduSpider|default=0}</span>
+                                    </div>
+                                    <div class="item_d">
+                                        <img src="/static/images/spider/Googlebot.ico" class="item_ico">
+                                        <span>Google</span>
+                                        <span class="count" id="Googlebot">{$spiderLogCount.Googlebot|default=0}</span>
+                                    </div>
+                                </div>
+                                <div class="inbox">
+                                    <div class="item_d">
+                                        <img src="/static/images/spider/360Spider.ico" class="item_ico">
+                                        <span>360蜘蛛</span>
+                                        <span class="count" id="360Spider">{$spiderLogCount.360Spider|default=0}</span>
+                                    </div>
+                                    <div class="item_d">
+                                        <img src="/static/images/spider/Sogou.ico" class="item_ico">
+                                        <span>搜狗</span>
+                                        <span class="count" id="Sogou">{$spiderLogCount.Sogou|default=0}</span>
+                                    </div>
+                                </div>
+                                <div class="inbox">
+                                    <div class="item_d">
+                                        <img src="/static/images/spider/YisouSpider.ico" class="item_ico">
+                                        <span>神马</span>
+                                        <span class="count" id="YisouSpider">{$spiderLogCount.YisouSpider|default=0}</span>
+                                    </div>
+                                    <div class="item_d">
+                                        <img src="/static/images/spider/ByteSpider.ico" class="item_ico">
+                                        <span>今日头条</span>
+                                        <span class="count" id="ByteSpider">{$spiderLogCount.ByteSpider|default=0}</span>
+                                    </div>
+                                </div>
+                                <div class="inbox">
+                                    <div class="item_d">
+                                        <img src="/static/images/spider/BingBot.ico" class="item_ico">
+                                        <span>微软bing</span>
+                                        <span class="count" id="BingBot">{$spiderLogCount.BingBot|default=0}</span>
+                                    </div>
+                                    <div class="item_d">
+                                        <img src="/static/images/spider/YandexBot.ico" class="item_ico">
+                                        <span>Yandex</span>
+                                        <span class="count" id="YandexBot">{$spiderLogCount.YandexBot|default=0}</span>
+                                    </div>
+                                </div>
+                                <div class="inbox">
+                                    <div class="item_d">
+                                        <img src="" class="item_ico">
+                                        <span>🐷 总蜘蛛</span>
+                                        <span class="count" >{$spiderCount|default=0}</span>
+                                    </div>
+
+                                    <div class="item_d" sa-event="tabs" data-url="{:url('/system.Spider/index')}" data-title="蜘蛛分析">
+                                        <img src="" class="item_ico">
+                                        <span>🕸️ 蜘蛛分析</span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md8">
+            <div class="layui-card">
+                <div class="layui-card-header">蜘蛛时效统计表</div>
+                <div class="layui-card-body">
+                    <div class="layui-center">
+                        <a class="spiderOrder active" data-cycle="today">今天<span class="count">({$spiderDayCount.today})</span></a>
+                        <a class="spiderOrder" data-cycle="yesterday">昨天<span class="count">({$spiderDayCount.yesterday})</span></a>
+                        <a class="spiderOrder" data-cycle="beforeYesterday">前天<span class="count">({$spiderDayCount.beforeYesterday})</span></a>
+                    </div>
+                    <div id="spiderHoursCharts" style="height: 235px;"></div>
+                    <div id="spiderHoursData" style="display: none">{$spiderHoursData|raw}</div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="__STATICADMIN__module/echarts/echarts.js"></script>
+<script src="__STATICADMIN__module/echarts/echarts-wordcloud.js"></script>
+<script src="__STATICADMIN__module/echarts/china.js"></script>
+<include file="/public/footer"/>
+
+<script>
+
+    layui.use(['show','carousel','layer'], function () {
+
+        let $ = layui.jquery; let show = layui.show;
+        var layer = layui.layer;
+        var carousel = layui.carousel;
+
+        //建造实例
+        carousel.render({
+            elem: '#carousel'
+            , width: '100%' //设置容器宽度
+            , arrow: 'none' //始终显示箭头
+        });
+        
+        var spiderHoursCharts = echarts.init(document.getElementById('spiderHoursCharts'));
+        var getSpiderOptions = function (xAxisData, seriesData) {
+            return {
+                color: ['#1890ff', '#666'],
+                tooltip: {
+                    trigger: "axis"
+                },
+                xAxis: [{
+                    type: "category",
+                    boundaryGap: !1,
+                    data: xAxisData
+                }],
+                yAxis: [{
+                    type: "value"
+                }],
+                grid: {
+                    x: 38,
+                    y: 15,
+                    x2: 18,
+                    y2: 35,
+                    borderWidth: 1,
+                },
+                series: [{
+                    name: "蜘蛛访问次数（次/小时）",
+                    type: "line",
+                    smooth: !0,
+                    itemStyle: {
+                        normal: {
+                            areaStyle: {
+                                type: "default"
+                            }
+                        }
+                    },
+                    data: seriesData
+                }]
+            };
+        }
+        var spiderHoursData = JSON.parse($('#spiderHoursData').text());
+        var spiderOptions = getSpiderOptions(spiderHoursData.xAxisData, spiderHoursData.seriesData);
+        spiderHoursCharts.setOption(spiderOptions);
+        /**
+         * 查询注册报表
+         * @param page
+         */
+        $('.spiderOrder').click(function (e) {
+            let that = $(this);
+            let cycle = $(this).data('cycle');
+            $.ajax({
+                url: '{:url("/system.Spider/hours")}',
+                type: 'post',
+                data: {cycle: cycle},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.code === 200) {
+                        // 渲染图表
+                        let spiderHoursData = res.data.spiderHoursData;
+                        let spiderOptions = getSpiderOptions(spiderHoursData.xAxisData, spiderHoursData.seriesData);
+                        spiderHoursCharts.setOption(spiderOptions);
+
+                        // 重载数据
+                        let spiderLogCount = res.data.spiderLogCount;
+                        for (const key in spiderLogCount) {
+                            $('#'+key).text(spiderLogCount[key]);
+                        }
+                        $('.spiderOrder').removeClass('active');
+                        $(that).addClass('active');
+                    } else {
+                        layer.info(res.msg);
+                    }
+                }
+            })
+        })
+
+        // 窗口大小改变事件
+        window.onresize = function () {
+            spiderHoursCharts.resize();
+        };
+    })
+
+</script>
+</body>
+</html>

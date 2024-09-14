@@ -1,0 +1,346 @@
+<include file="/public/header"/>
+<!-- // 重定位Style -->
+<style>
+    .layui-bg-white .layui-input {
+        border: 0px;
+    }
+
+    .layui-form-item .layui-input-inline {
+        /*width: 220px;*/
+    }
+
+    .spiderOrder:hover, .active {
+      color: red;
+    }
+
+    .count {
+        margin: 0 2px;
+        color: red;
+        font-weight: bold;
+    }
+
+    .spider-list a {
+        margin-right: 10px;
+    }
+
+    .spider-list a img {
+        height: 15px;
+        vertical-align: middle;
+        margin-left: 10px;
+        margin-top: -3px;
+    }
+
+</style>
+
+<!-- // 展示数据 -->
+<div class="layui-fluid">
+
+
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-header">今日访问比率
+                    <span class="pull-right">
+                      <a class="spiderOrder active" data-cycle="today">今天</a>
+                      <a class="spiderOrder" data-cycle="yesterday">昨天</a>
+                      <a class="spiderOrder" data-cycle="beforeYesterday">前天</a>
+                  </span>
+                </div>
+                <div class="layui-card-body" style="overflow: hidden;">
+                    <div id="spider-ratio" style="width: 100%;height: 230px;"></div>
+                    <div id="spiderRatioData" style="display: none">{$spiderRatio|raw}</div>
+                    <div id="spiderRatioTotal" style="display: none">{$spiderTotal|raw}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md8">
+            <div class="layui-card">
+                <div class="layui-card-header">蜘蛛访问记录</div>
+                <div class="layui-card-body" style="overflow: hidden;">
+                    <div id="spider-log" style="width: 100%;height: 230px;"></div>
+                    <div id="spiderxAxisData" style="display: none">{$xAxisData|raw}</div>
+                    <div id="spiderseriesData" style="display: none">{$seriesData|raw}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="layui-card mt10">
+        <!-- // 默认操作按钮 -->
+        <div class="layui-card-header layadmin-card-header-auto">
+            <div class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <div class="layui-form-label">{:__('蜘蛛查询')}</div>
+                        <div class="layui-input-inline ">
+                            <input name="day" class="layui-input" lay-datetime data-dateformat="yyyyMMdd" type="text" autocomplete="off"
+                                   placeholder="{:__('20201212')}"/>
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="spiderBtnOrder layui-btn icon-btn" data-type="search"><i class="layui-icon layui-icon-search"></i>{:__('查看')}</button>
+                    </div>
+                    <div class="layui-inline">
+                        <button class="spiderBtnOrder layui-btn layui-btn-danger" data-day="{:date('Ymd')}">今天</button>
+                        <button class="spiderBtnOrder layui-btn" data-day="{:date('Ymd', strtotime('-1 day'))}">昨天</button>
+                        <button class="spiderBtnOrder layui-btn" data-day="{:date('Ymd', strtotime('-2 day'))}">前天</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- // 创建数据实例 -->
+        <table id="lay-tableList" lay-filter="lay-tableList"></table>
+    </div>
+
+</div>
+
+<script type="text/html" id="treeTable">
+    <div class="spider-list">
+        <a lay-event="all" id="allSpider" class="active">全部(<span class="count">{$spiderTotal}</span>)</a>|
+        <volist name="spiderRatioList" id="vo">
+            <a lay-event="{$vo.key}" id="{$vo.key}"><img src="/static/images/spider/{$vo.key}.ico"> {$vo.name}(<span class="count">{$vo.value}</span>)</a>|
+        </volist>
+    </div>
+</script>
+
+<script src="__STATICADMIN__module/echarts/echarts.js"></script>
+<include file="/public/footer"/>
+<script>
+    layui.use(['show','table'], function () {
+
+        var table = layui.table;
+        var $ = layui.jquery; let show = layui.show;
+        var tableURL = "{:url('/system.Spider/getSpiderLog')}";
+        // 初始化表
+        var isTable = table.render({
+            elem: "#lay-tableList"
+            , url: tableURL
+            , limit: 18
+            , page: true
+            , toolbar: '#treeTable'
+            , cols: [[
+                {type: 'checkbox'},
+                {field: 'spider', align: 'center', width: 130, title: '{:__("蜘蛛名称")}'},
+                {
+                    field: 'ip', align: 'center', width: 180, templet: function (d) {
+                        return '<a href="https://www.ip138.com/iplookup.asp?ip=' + d.ip + '&action=2" target="_blank">' + d.ip + '</a>';
+                    }, title: '{:__("IP地址")}'
+                },
+                {field: 'region', align: 'left', width: 230, title: '{:__("国家城市")}'},
+                {
+                    field: 'url', align: 'left', templet: function (d) {
+                        return '<a href="' + d.url + '" target="_blank">' + d.url + '</a>';
+                    }, title: '{:__("访问地址")}'
+                },
+                {field: 'device', align: 'center', width: 160, title: '{:__("蜘蛛类型")}'},
+                {field: 'time', align: 'center', width: 160, title: '{:__("访问时间")}'},
+            ]]
+        })
+
+        $('.spiderBtnOrder').click(function(e) {
+            let that = $(this),
+                type = $(this).data('type');
+            let day = $(this).data('day');
+            if (typeof type != 'undefined') {
+                day = $('input[name="day"]').val();
+                if (day === '') {
+                    layer.info('请选择日期');
+                    return;
+                }
+                // 设置属性
+                $(that).attr('data-day', day);
+            }
+
+            $.ajax({
+                url: '{:url("/system.Spider/getSpiderDetail")}',
+                type: 'post',
+                data: {day: day},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.code === 200) {
+                        // 渲染图表
+                        let spiderTotal = res.data.spiderTotal;
+                        $('#allSpider').find('.count').text(spiderTotal);
+                        let spiderRatioList = res.data.spiderRatioList;
+                        for (const spiderKey in spiderRatioList) {
+                            $('a#' + spiderRatioList[spiderKey].key).find('.count').text(spiderRatioList[spiderKey].value);
+                        }
+
+                        $('.spiderBtnOrder').removeClass('layui-btn-danger');
+                        $(that).addClass('layui-btn-danger');
+
+                        // 重载表格传入day参数
+                        table.reloadData('lay-tableList', {
+                            page: {curr: 1},
+                            where: {
+                                day: day,
+                                type: $('.spider-list a.active').attr('id')
+                            }
+                        })
+
+                    } else {
+                        layer.info(res.msg);
+                    }
+                }
+            })
+        })
+
+        // 获取蜘蛛详细列表
+        $('.spider-list a').click(function (c) {
+            let type = $(this).attr('id');
+            $('.spider-list a').removeClass('active');
+            $(this).addClass('active');
+            // 获取时间day
+            let day = $('.spiderBtnOrder.layui-btn-danger').data('day');
+            table.reloadData('lay-tableList', {
+                url: tableURL,
+                page: {curr: 1},
+                where: {
+                    type: type,
+                    day: day
+                }
+            })
+        })
+
+        var spiderRatio = echarts.init(document.getElementById('spider-ratio'));
+        var spiderRatioData = JSON.parse($('#spiderRatioData').text());
+        var spiderRatioTotal = JSON.parse($('#spiderRatioTotal').text());
+        var getSpiderRatiOption = function (data, spiderTotal) {
+            return {
+                // 子标题
+                title: {
+                    text: '蜘蛛总数：' + spiderTotal,
+                    // 字体大小
+                    textStyle: {
+                        fontSize: 14
+                    },
+                },
+                tooltip: {
+                    trigger: 'item',
+                    formatter: '{a} <br/>{b}: {c} ({d}%)'
+                },
+                legend: {
+                    // 距离顶部的距离
+                    top: '11%',
+                    orient: 'vertical',
+                    left: 'left'
+                },
+                series: [
+                    {
+                        name: '蜘蛛日访问',
+                        type: 'pie',
+                        label: {
+                            show: false,
+                            position: 'center'
+                        },
+                        labelLine: {
+                            show: false
+                        },
+                        radius: ['0%', '90%'],
+                        data: data,
+                        emphasis: {
+                            itemStyle: {
+                                shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            }
+                        }
+                    }
+                ]
+            };
+        }
+        var spiderRatiOption = getSpiderRatiOption(spiderRatioData, spiderRatioTotal);
+        spiderRatio.setOption(spiderRatiOption);
+
+        // ajax请求
+        /**
+         * 查询注册报表
+         * @param page
+         */
+        $('.spiderOrder').click(function (e) {
+            let that = $(this);
+            let cycle = $(this).data('cycle');
+            $.ajax({
+                url: '{:url("/system.Spider/index")}',
+                type: 'post',
+                data: {cycle: cycle},
+                dataType: 'json',
+                success: function (res) {
+                    if (res.code === 200) {
+                        // 渲染图表
+                        let spiderOptions = getSpiderRatiOption(res.data.spiderRatio, res.data.spiderTotal);
+                        spiderRatio.setOption(spiderOptions);
+
+                        $('.spiderOrder').removeClass('active');
+                        $(that).addClass('active');
+                    } else {
+                        layer.info(res.msg);
+                    }
+                }
+            })
+        })
+
+        // 渲染活动情况预测
+        var spiderLog = echarts.init(document.getElementById('spider-log'));
+        var seriesData = JSON.parse($('#spiderseriesData').text());
+        var xAxisData = JSON.parse($('#spiderxAxisData').text());
+        var option = {
+            title: {
+                subtext: '最近30天访问记录',
+                textStyle: {
+                    color: '#000'
+                }
+            },
+            color: ['#e35e28', '#666'],
+            tooltip: {
+                trigger: "axis"
+            },
+            xAxis: [{
+                type: "category",
+                axisPointer: {
+                    type: "shadow",
+                },
+                axisLabel: {
+                    interval: 0,
+                    rotate: 40,
+                },
+                data: xAxisData
+            }],
+            yAxis: [{
+                type: "value"
+            }],
+            // 间距
+            grid: {
+                left: "1%",
+                right: "1%",
+                bottom: "10%",
+                containLabel: !0
+            },
+            series: [{
+                name: "蜘蛛访问次数（次/天）",
+                type: "line",
+                smooth: !0,
+                itemStyle: {
+                    normal: {
+                        areaStyle: {
+                            type: "default"
+                        }
+                    }
+                },
+                data: seriesData
+            }]
+        };
+        spiderLog.setOption(option);
+
+        // 窗口大小改变事件
+        window.onresize = function () {
+            spiderRatio.resize();
+            spiderLog.resize();
+
+        };
+
+    });
+</script>

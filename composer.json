@@ -1,0 +1,79 @@
+{
+  "name": "meystack/swiftadmin",
+  "type": "project",
+  "version": "3.0.0",
+  "keywords": [
+    "swiftadmin",
+    "webman"
+  ],
+  "homepage": "https://www.swiftadmin.net",
+  "license": "Apache-2.0",
+  "description": "High performance HTTP Service Framework.",
+  "authors": [
+    {
+      "name": "meystack",
+      "email": "coolsec@foxmail.com",
+      "homepage": "https://www.swiftadmin.net",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "email": "coolsec@foxmail.com",
+    "issues": "https://github.com/meystack/swiftadmin/issues",
+    "forum": "https://ask.swiftadmin.net/",
+    "wiki": "https://doc.swiftadmin.net/help/",
+    "source": "https://github.com/meystack/swiftadmin"
+  },
+  "require": {
+    "php": ">=8.0",
+    "topthink/framework": "^6.0.0",
+    "topthink/think-orm": "^2.0",
+    "topthink/think-multi-app": "^1.0",
+    "topthink/think-image": "^1.0",
+    "topthink/think-view": "^1.0",
+    "topthink/think-captcha": "^3.0",
+    "phpmailer/phpmailer": "^6.6",
+    "firebase/php-jwt": "^6.3",
+    "endroid/qr-code": "^4.4",
+    "guzzlehttp/guzzle": "^7.5",
+    "yansongda/pay": "~3.2.0",
+    "php-di/php-di": "^7.0",
+    "qcloud/cos-sdk-v5": "^2.6",
+    "hashids/hashids": "^4.1",
+    "overtrue/pinyin": "5.0",
+    "overtrue/wechat": "~5.0",
+    "ext-zip": "*",
+    "ext-gd": "*",
+    "ext-curl": "*",
+    "ext-pdo": "*",
+    "ext-mysqli": "*",
+    "ruflin/elastica": "^7.3",
+    "phpoffice/phpspreadsheet": "^1.29",
+    "erusev/parsedown": "2.0.x-dev",
+    "topthink/think-queue": "^3.0"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^4.2",
+    "topthink/think-trace": "^1.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\": "app"
+    },
+    "psr-0": {
+      "": "extend/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "easywechat-composer/easywechat-composer": true
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "@php think service:discover",
+      "@php think vendor:publish"
+    ]
+  }
+}
