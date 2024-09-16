@@ -165,7 +165,7 @@ layui.define(['laypage','dropdown'], function (exports) {
             options = this.config;
 
         $.ajax({
-            url: options.url,
+            url: options.url + 'index',
             type: 'post',
             data: {
                 page: page,
@@ -226,7 +226,7 @@ layui.define(['laypage','dropdown'], function (exports) {
                     , id: $(item).data('index')
                 }
                 , {
-                    title: '<span style="color: red; ">删除</span>'
+                    title: '删除'
                     , type: 'delete'
                     , id: $(item).data('index')
                 }];
