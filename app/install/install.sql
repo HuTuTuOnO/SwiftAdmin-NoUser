@@ -400,16 +400,6 @@ INSERT INTO `__PREFIX__config` VALUES (53, 'cloud_type', 0, NULL, 'string', 'qcl
 INSERT INTO `__PREFIX__config` VALUES (54, 'aliyun_oss', 0, NULL, 'array', '{\"accessId\":\"\",\"accessSecret\":\"\",\"bucket\":\"swiftadmin\",\"endpoint\":\"\",\"url\":\"\"}', '阿里云OSS');
 INSERT INTO `__PREFIX__config` VALUES (55, 'qcloud_oss', 0, NULL, 'array', '{\"app_id\":\"16528\",\"secret_id\":\"\",\"secret_key\":\"QaT5QUlyuZx3tSklW\",\"bucket\":\"sw251277265\",\"region\":\"ap-shanghai\",\"url\":\"\"}', '腾讯云OSS');
 INSERT INTO `__PREFIX__config` VALUES (56, 'email', 0, NULL, 'array', '{\"smtp_debug\":\"0\",\"smtp_host\":\"smtp.qq.com\",\"smtp_port\":\"465\",\"smtp_name\":\"\",\"smtp_user\":\"\",\"smtp_pass\":\"\",\"smtp_test\":\"\"}', '邮箱配置');
-INSERT INTO `__PREFIX__config` VALUES (57, 'qq', 0, NULL, 'array', '{\"app_id\":\"\",\"app_key\":\"\",\"callback\":\"\"}', 'QQ登录');
-INSERT INTO `__PREFIX__config` VALUES (58, 'weixin', 0, NULL, 'array', '{\"app_id\":\"\",\"app_key\":\"\",\"callback\":\"\"}', '微信登录');
-INSERT INTO `__PREFIX__config` VALUES (59, 'gitee', 0, NULL, 'array', '{\"app_id\":\"\",\"app_key\":\"\",\"callback\":\"\"}', '码云登录');
-INSERT INTO `__PREFIX__config` VALUES (60, 'weibo', 0, NULL, 'array', '{\"app_id\":\"\",\"app_key\":\"\",\"callback\":\"\"}', '微博登录');
-INSERT INTO `__PREFIX__config` VALUES (61, 'alipay', 0, NULL, 'array', '{\"mode\":\"0\",\"app_id\":\"\",\"app_public_cert_path\":\"\",\"app_secret_cert\":\"\",\"return_url\":\"\",\"notify_url\":\"\",\"alipay_public_cert_path\":\"\",\"alipay_root_cert_path\":\"\"}', '支付宝');
-INSERT INTO `__PREFIX__config` VALUES (62, 'wechat', 0, NULL, 'array', '{\"mode\":\"0\",\"mch_id\":\"\",\"mch_secret_key\":\"\",\"mp_app_id\":\"\",\"mini_app_id\":\"\",\"notify_url\":\"\",\"mch_secret_cert\":\"\",\"mch_public_cert_path\":\"\"}', '微信支付');
-INSERT INTO `__PREFIX__config` VALUES (63, 'smstype', 0, NULL, 'string', 'tensms', '短信类型');
-INSERT INTO `__PREFIX__config` VALUES (64, 'alisms', 0, NULL, 'array', '{\"app_id\":\"cn-hangzhou\",\"app_sign\":\"\",\"access_id\":\"\",\"access_secret\":\"\"}', '阿里云短信');
-INSERT INTO `__PREFIX__config` VALUES (65, 'tensms', 0, NULL, 'array', '{\"app_id\":\"\",\"app_sign\":\"\",\"secret_id\":\"\",\"secret_key\":\"\"}', '腾讯云短信');
-INSERT INTO `__PREFIX__config` VALUES (66, 'mpwechat', 0, NULL, 'array', '{\"app_id\":\"\",\"secret\":\"\",\"token\":\"\",\"aes_key\":\"\"}', '微信公众号');
 INSERT INTO `__PREFIX__config` VALUES (84, 'sitemap', 0, NULL, 'array', '', '地图配置');
 INSERT INTO `__PREFIX__config` VALUES (85, 'rewrite', 0, NULL, 'string', '', 'URL配置');
 INSERT INTO `__PREFIX__config` VALUES (86, 'database', 0, NULL, 'string', '', '数据库维护');
