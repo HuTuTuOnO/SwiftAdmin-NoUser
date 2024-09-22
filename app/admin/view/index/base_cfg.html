@@ -83,7 +83,6 @@
                             <li>{:__('核心设置')}</li>
                             <li>{:__('附件设置')}</li>
                             <li>{:__('图片水印')}</li>
-                            <li>{:__('视频设置')}</li>
                             <li>{:__('接口配置')}</li>
                             <li>{:__('自定义变量')}</li>
                         </ul>
@@ -840,105 +839,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- // 视频配置开始 -->
-                            <div class="layui-tab-item">
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">播放器：</label>
-                                    <div class="layui-input-inline" style="width: 145px;">
-                                        <input type="text" name="play[play_width]" placeholder="播放器宽度"
-                                            value="{$config['play']['play_width']}" class="layui-input">
-                                    </div>
-                                    <div class="layui-input-inline" style="width: 145px;">
-                                        <input type="text" name="play[play_height]" placeholder="播放器高度"
-                                            value="{$config['play']['play_height']}" class="layui-input">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">* 播放器的高度和宽度设置 </div>
-                                </div>
-
-
-                                <div class="layui-form-item ">
-                                    <label class="layui-form-label">开启列表：</label>
-                                    <div class="layui-input-inline">
-                                        <select name="play[play_show]">
-                                            <option value="1">开启</option>
-                                            <option value="0" selected="">关闭</option>
-                                        </select>
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">* 附件的保存路径和风格。</div>
-                                </div>
-
-                                <div class="layui-form-item ">
-                                    <label class="layui-form-label">广告时长：</label>
-                                    <div class="layui-input-inline">
-                                        <input type="text" name="play[play_second]" autocomplete="off"
-                                            value="{$config.play.play_second}" class="layui-input">
-                                    </div>
-                                    <div class="layui-form-mid layui-word-aux">* 设置为0则不启用。</div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">地区列表:</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="play[play_area]" autocomplete="off"
-                                            value="{$config.play.play_area}" class="layui-input">
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">年代列表:</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="play[play_year]" autocomplete="off"
-                                            value="{$config.play.play_year}" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">视频版本:</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="play[play_version]" autocomplete="off"
-                                            value="{$config.play.play_version}" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">视频对白:</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="play[play_language]" autocomplete="off"
-                                            value="{$config.play.play_language}" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">播出周期:</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="play[play_week]" autocomplete="off"
-                                            value="{$config.play.play_week}" class="layui-input">
-                                    </div>
-                                </div>
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">缓冲广告:</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="play[play_playad]" autocomplete="off"
-                                            value="{$config.play.play_playad}" class="layui-input">
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">下载地址:</label>
-                                    <div class="layui-input-block">
-                                        <input type="text" name="play[play_down]" autocomplete="off"
-                                            value="{$config.play.play_down}" class="layui-input">
-                                    </div>
-                                </div>
-
-                                <div class="layui-form-item">
-                                    <label class="layui-form-label">服务器组:</label>
-                                    <div class="layui-input-block">
-                                        <textarea name="play[play_downgorup]" class="layui-textarea"
-                                            placeholder="* 请写入提供下载的服务器组">{$config.play.play_downgorup}</textarea>
-                                        <div class="layui-form-mid layui-word-aux">* 下载服务器前缀，前缀名称$$$对应地址每行一个</div>
-                                    </div>
-                                </div>
-
                             </div>
 
                             <!-- // 接口配置信息开始 -->

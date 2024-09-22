@@ -394,7 +394,6 @@ INSERT INTO `__PREFIX__config` VALUES (47, 'upload_water_color', 0, 'upload', 's
 INSERT INTO `__PREFIX__config` VALUES (48, 'upload_water_pct', 0, 'upload', 'string', '47', '透明度');
 INSERT INTO `__PREFIX__config` VALUES (49, 'upload_water_img', 0, 'upload', 'string', '/', '图片水印地址');
 INSERT INTO `__PREFIX__config` VALUES (50, 'upload_water_pos', 0, 'upload', 'string', '9', '水印位置');
-INSERT INTO `__PREFIX__config` VALUES (51, 'play', 0, NULL, 'array', '{\"play_width\":\"960\",\"play_height\":\"450\",\"play_show\":\"0\",\"play_second\":\"10\",\"play_area\":\"大陆,香港,中国台湾,美国,韩国,日本,泰国,印度,英国,法国,俄罗斯,新加坡,其它\",\"play_year\":\"2022,2021,2020,2019,2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2004,2003,2002,2001,2000,1999\",\"play_version\":\"高清版,剧场版,抢先版,OVA,TV,影院版\",\"play_language\":\"国语,英语,粤语,韩语,日语,法语,德语,泰语,俄语,其它\",\"play_week\":\"周一,周二,周三,周四,周五,周六,周日\",\"play_playad\":\"http:\\/\\/www.swiftadmin.net\\/api\\/show.html\",\"play_down\":\"http:\\/\\/www.swiftadmin.net\\/api\\/show.html\",\"play_downgorup\":\"http:\\/\\/down.swiftadmin.net\\/\"}', '播放器数据');
 INSERT INTO `__PREFIX__config` VALUES (52, 'cloud_status', 0, NULL, 'string', '0', '是否开启OSS上传');
 INSERT INTO `__PREFIX__config` VALUES (53, 'cloud_type', 0, NULL, 'string', 'qcloud_oss', 'OSS上传类型');
 INSERT INTO `__PREFIX__config` VALUES (54, 'aliyun_oss', 0, NULL, 'array', '{\"accessId\":\"\",\"accessSecret\":\"\",\"bucket\":\"swiftadmin\",\"endpoint\":\"\",\"url\":\"\"}', '阿里云OSS');
