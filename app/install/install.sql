@@ -404,7 +404,6 @@ INSERT INTO `__PREFIX__config` VALUES (85, 'rewrite', 0, NULL, 'string', '', 'UR
 INSERT INTO `__PREFIX__config` VALUES (86, 'database', 0, NULL, 'string', '', '数据库维护');
 INSERT INTO `__PREFIX__config` VALUES (87, 'variable', 0, NULL, 'array', '{\"test\":\"我是值2\",\"ceshi\":\"我是测试变量的值\"}', '自定义变量');
 INSERT INTO `__PREFIX__config` VALUES (88, 'param', 0, NULL, 'string', '', '测试代码');
-INSERT INTO `__PREFIX__config` VALUES (89, 'full_status', 0, NULL, 'string', '0', '全文检索');
 INSERT INTO `__PREFIX__config` VALUES (90, 'editor', 0, NULL, 'string', 'lay-editor', '编辑器选项');
 
 -- ----------------------------

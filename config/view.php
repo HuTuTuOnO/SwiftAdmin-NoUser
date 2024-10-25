@@ -31,7 +31,5 @@ return [
         '__STATICIMAGES__' => '/static/images/',
         '__STATICADMIN__'  => '/static/system/',
         '__ADMINIMAGES__'  => '/static/system/images/',
-        '__ADMINPLUGIN__'  => '/static/system/plugin/',
-        '__HOMEPLUGIN__'   => '/static/plugin/',
     ]
 ];

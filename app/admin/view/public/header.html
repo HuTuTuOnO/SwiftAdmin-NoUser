@@ -19,8 +19,7 @@
 	var app_Config = {
 		app: "{$app|default='admin.php'}",
 		controller: "{$controller|default='index'}",
-		action: "{$action|default='index'}",
-		api: "{:config('app.api_url')}"
+		action: "{$action|default='index'}"
 	};
 
 	var upload_chunkSize =  {:saenv('upload_chunk_size')};

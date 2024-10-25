@@ -51,16 +51,10 @@ return [
     'error_message'    => '页面错误！请稍后再试～',
 
     // 框架版本
-    'version'          => 'v20231118',
-
-    // 插件冲突缓存
-    'plugin_mutex'     => true,
+    'version'          => 'V20241026',
 
     // 跨域请求域名
     'cors_domain'      => ['*', '127.0.0.1','localhost'],
-
-    //API接口地址
-    'api_url'          => 'https://api.swiftadmin.net/',
 
     // 显示错误信息
     'show_error_msg'   => false,
