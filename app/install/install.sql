@@ -357,7 +357,6 @@ INSERT INTO `__PREFIX__config` VALUES (10, 'site_keyword', 1, 'site', 'string', 
 INSERT INTO `__PREFIX__config` VALUES (11, 'site_description', 1, 'site', 'string', 'swiftadmin是一款基于Webman和layui的极速后台开发框架, 你可以使用swiftadmin快速开发你的后台管理、会员中心、API接口、移动应用等等功能!', '网站描述');
 INSERT INTO `__PREFIX__config` VALUES (12, 'site_total', 1, 'site', 'string', '', '统计代码');
 INSERT INTO `__PREFIX__config` VALUES (13, 'site_copyright', 1, 'site', 'string', '版权信息：', '版权信息');
-INSERT INTO `__PREFIX__config` VALUES (14, 'site_clearLink', 1, 'site', 'string', '1', '清理非本站链接');
 INSERT INTO `__PREFIX__config` VALUES (15, 'site_status', 1, 'site', 'string', '0', '运营状态');
 INSERT INTO `__PREFIX__config` VALUES (16, 'site_notice', 1, 'site', 'string', '本站内容正在审核中', '关闭通知');
 INSERT INTO `__PREFIX__config` VALUES (17, 'auth_key', 0, NULL, 'string', '38nfCIlkqNMI2', '授权码');
@@ -394,10 +393,6 @@ INSERT INTO `__PREFIX__config` VALUES (47, 'upload_water_color', 0, 'upload', 's
 INSERT INTO `__PREFIX__config` VALUES (48, 'upload_water_pct', 0, 'upload', 'string', '47', '透明度');
 INSERT INTO `__PREFIX__config` VALUES (49, 'upload_water_img', 0, 'upload', 'string', '/', '图片水印地址');
 INSERT INTO `__PREFIX__config` VALUES (50, 'upload_water_pos', 0, 'upload', 'string', '9', '水印位置');
-INSERT INTO `__PREFIX__config` VALUES (52, 'cloud_status', 0, NULL, 'string', '0', '是否开启OSS上传');
-INSERT INTO `__PREFIX__config` VALUES (53, 'cloud_type', 0, NULL, 'string', 'qcloud_oss', 'OSS上传类型');
-INSERT INTO `__PREFIX__config` VALUES (54, 'aliyun_oss', 0, NULL, 'array', '{\"accessId\":\"\",\"accessSecret\":\"\",\"bucket\":\"swiftadmin\",\"endpoint\":\"\",\"url\":\"\"}', '阿里云OSS');
-INSERT INTO `__PREFIX__config` VALUES (55, 'qcloud_oss', 0, NULL, 'array', '{\"app_id\":\"16528\",\"secret_id\":\"\",\"secret_key\":\"QaT5QUlyuZx3tSklW\",\"bucket\":\"sw251277265\",\"region\":\"ap-shanghai\",\"url\":\"\"}', '腾讯云OSS');
 INSERT INTO `__PREFIX__config` VALUES (56, 'email', 0, NULL, 'array', '{\"smtp_debug\":\"0\",\"smtp_host\":\"smtp.qq.com\",\"smtp_port\":\"465\",\"smtp_name\":\"\",\"smtp_user\":\"\",\"smtp_pass\":\"\",\"smtp_test\":\"\"}', '邮箱配置');
 INSERT INTO `__PREFIX__config` VALUES (84, 'sitemap', 0, NULL, 'array', '', '地图配置');
 INSERT INTO `__PREFIX__config` VALUES (85, 'rewrite', 0, NULL, 'string', '', 'URL配置');

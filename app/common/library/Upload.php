@@ -83,40 +83,6 @@ class Upload
         if ($upload = saenv('upload', true)) {
             $this->config = array_merge($this->config, $upload);
         }
-
-        // 是否开启云存储
-        if (saenv('cloud_status')) {
-            // 实例化COS接口
-            $config = saenv('qcloud_oss');
-            $cosClient = $this->getCosClient($config);
-
-            // 单文件上传事件
-            Event::listen('uploadFileAfter', function ($data) use ($cosClient, $config) {
-                try {
-                    $resource = str_replace('\\', '/', $data['resource']);
-                    $cosClient->Upload($config['bucket'], '/' . $resource, file_get_contents($data['resource']));
-                } catch (\Exception $e) {
-                    Log::info('上传文件失败：' . $e->getMessage());
-                }
-            });
-
-            // 分片上传事件
-            Event::listen('uploadFileMultipart', function ($fileStream) use ($cosClient, $config) {
-                $object = $fileStream['filePath'] . DIRECTORY_SEPARATOR . $fileStream['fileName'] . '.' . $fileStream['fileExt'];
-                $object = ltrim(str_replace('\\', '/', $object), '/');
-                $position = $fileStream['index'] * intval(saenv('upload_chunk_size'));
-                try {
-                    $cosClient->appendObject([
-                        'Bucket'   => $config['bucket'],
-                        'Key'      => $object,
-                        'Position' => $position,
-                        'Body'     => file_get_contents($fileStream['resource'])
-                    ]);
-                } catch (\Exception $e) {
-                    Log::info('上传文件失败：' . $e->getMessage());
-                }
-            });
-        }
     }
 
     /**
@@ -182,8 +148,6 @@ class Upload
                 }
             }
 
-            Event::trigger('uploadFileAfter', ['fileName' => $this->filename, 'resource' => $this->resource]);
-
             $this->attachment($this->resource, $file->getOriginalName());
             return $this->success('上传成功', DS . $this->resource);
         }
@@ -235,9 +199,6 @@ class Upload
             'filePath' => $this->filepath,
             'resource' => $this->resource
         ];
-
-        // 分片上传
-        Event::trigger('uploadFileMultipart', $fileStream);
 
         return $this->success('分片上传成功', '', [
             'chunkId' => $chunkId,
@@ -366,11 +327,6 @@ class Upload
             return false;
         }
 
-        Event::trigger('uploadFileAfter', [
-            'fileName' => $this->filename,
-            'resource' => $this->resource
-        ]);
-
         $this->attachment($this->resource, current($urlPath) . '.' . $fileExt);
         return $this->success('文件上传成功！', DS . $this->resource);
     }
@@ -457,22 +413,6 @@ class Upload
         } catch (\Throwable $th) {
             throw new \Exception('附件数据库异常');
         }
-    }
-
-    /**
-     * 实例化COS对象
-     * @param array $config
-     * @return Client
-     */
-    protected function getCosClient(array $config = []): Client
-    {
-        return new Client([
-            'region'      => $config['region'],
-            'credentials' => [
-                'secretId'  => $config['secret_id'],
-                'secretKey' => $config['secret_key'],
-            ],
-        ]);
     }
 
     /**
