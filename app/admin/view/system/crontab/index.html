@@ -1,0 +1,131 @@
+<include file="/public/header" />
+<div class="layui-fluid">
+    <div class="layui-card">
+        <!-- // 默认操作按钮 -->
+        <div class="layui-card-header layadmin-card-header-auto ">
+        <div class="layui-form">
+            <div class="layui-form-item">
+            <div class="layui-inline">
+                <div class="layui-input-inline">
+                    <input name="name" class="layui-input" type="text" placeholder="{:__('任务名称')}"/>
+                </div>
+            </div>
+            <div class="layui-inline" >
+                <!-- // 默认搜索 -->
+                <button class="layui-btn icon-btn" lay-filter="formSearch" lay-submit><i class="layui-icon layui-icon-search"></i>{:__('搜索')}</button>
+                <!-- // 打开添加页面 -->
+                <button class="layui-btn icon-btn" lay-open="" data-title="添加任务{:__('')}" data-area="690px" data-url="#editforms" >
+                    <i class="layui-icon layui-icon-add-1"></i>{:__('添加')}
+                </button>
+            </div>
+            </div>
+        </div>   
+        </div>
+
+        <!-- // 创建数据表实例 -->
+        <table id="lay-tableList" lay-filter="lay-tableList"></table>        
+    </div>
+</div>
+
+<!-- // 添加编辑数据 -->
+<script type="text/html" id="editforms" >
+<div class="layui-fluid layui-bg-white">
+    <form class="layui-form layui-form-fixed" lay-filter="editforms" >
+    <input type="text" name="id" hidden="">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"><font color="red">* </font>{:__('任务名称')}</label>
+        <div class="layui-input-inline">
+            <input name="name" placeholder="{:__('请输入任务名称')}" type="text" class="layui-input"  lay-verify="required" />
+        </div>
+
+        <label class="layui-form-label"><font color="red">* </font>{:__('任务类型')}</label>
+        <div class="layui-input-inline">
+            <input name="type" type="radio" value="1" title="{:__('定时任务')}" checked/>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"><font color="red">* </font>{:__('任务命令')}</label>
+        <div class="layui-input-block">
+            <input name="command" placeholder="{:__('请输入thinkphp命令，如vresion')}" type="text" class="layui-input"  lay-verify="required" />
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">{:__('任务参数')}</label>
+        <div class="layui-input-block">
+            <input name="params" placeholder="{:__('请输入参数，例:--id 8 --name 测试')}" type="text" class="layui-input"/>
+        </div>
+    </div>    
+
+    <div class="layui-form-item">
+        <label class="layui-form-label"><font color="red">* </font>{:__('运行规则')}</label>
+        <div class="layui-input-inline">
+            <input name="expression" placeholder="{:__('请输入crontab规则，例：5 9 * * *')}" type="text" class="layui-input"  lay-verify="required" />
+        </div>
+
+        <label class="layui-form-label"><font color="red">* </font>{:__('任务状态')}</label>
+        <div class="layui-input-inline">
+            <input name="status" type="radio" value="1" title="{:__('正常')}" checked/>
+            <input name="status" type="radio" value="0" title="{:__('停用')}"/>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">{:__('任务备注')}</label>
+        <div class="layui-input-block">
+            <textarea name="remark" cols="30" rows="10" style="min-height: 110px;" placeholder="{:__('请输入任务备注')}" class="layui-textarea" 
+            lay-verify="required"></textarea>
+        </div>
+    </div>
+
+    <div class="layui-footer layui-form-item layui-center "  >
+        <button class="layui-btn layui-btn-primary" type="button" sa-event="closePageDialog" >{:__('取消')}</button>
+        <button class="layui-btn" lay-add="{:url('/system.crontab/add')}" lay-edit="{:url('/system.crontab/edit')}" lay-filter="submitPage"  lay-submit>{:__('提交')}</button>
+    </div>
+    </form>
+</div>
+</script>
+
+
+<!-- // 列表工具栏 -->
+<script type="text/html" id="tableBar"> 
+    <a class="layui-table-text" data-title="{:__('编辑')}" data-area="690px" data-url="#editforms" lay-event="edit"  >{:__('编辑')}</a>
+    <div class="layui-divider layui-divider-vertical"></div>
+    <a class="layui-table-text" data-url="{:url('/system.crontab/del')}?id={{d.id}}" lay-event="del" >{:__('删除')}</a>
+</script>
+
+<include file="/public/footer" />
+<script>
+    layui.use(['show','table'], function () {
+
+        var table = layui.table;
+        /*
+         * 初始化表格
+        */
+        var isTable = table.render({
+            elem: "#lay-tableList"
+            ,url: "{:url('/system.crontab/index')}"
+            ,page: true
+            ,cols: [[
+                {type: 'checkbox', width:60},
+                {field: 'id', align: 'center',sort: true,width: 80,  title: 'ID'},
+                {field: 'name', align: 'center', title: "{:__('任务名称')}"},
+                {field: 'type', align: 'center', title: "{:__('任务类型')}"},
+                {field: 'command', align: 'center',title: "{:__('任务命令')}"},
+                {field: 'params', align: 'center', title: "{:__('任务参数')}"},
+                {field: 'status', align: 'center', title: "{:__('任务状态')}"},
+                {field: 'expression', align: 'center', title: "{:__('运行规则')}"},
+                {field: 'error', align: 'center', title: "{:__('错误原因')}"},
+                {field: 'last_time', align: 'center', title: "{:__('最后执行时间')}"},
+                {field: 'time', align: 'center', title: "{:__('时长')}"},
+                {field: 'max_time', align: 'center', title: "{:__('最大时长')}"},
+                {field: 'create_time', align: 'center', title: "{:__('创建时间')}"},
+                {align: 'center', toolbar: '#tableBar', width: 160, title: "{:__('操作')}"},
+            ]]
+        })
+
+    });
+
+</script>

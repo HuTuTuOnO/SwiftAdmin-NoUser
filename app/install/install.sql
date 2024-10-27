@@ -528,4 +528,33 @@ CREATE TABLE `__PREFIX__system_log`  (
 -- Records of __PREFIX__system_log
 -- ----------------------------
 
+-- ----------------------------
+-- Table structure for __PREFIX__crontab
+-- ----------------------------
+DROP TABLE IF EXISTS `__PREFIX__crontab`;
+CREATE TABLE `__PREFIX__crontab`  (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '定时任务名称',
+  `type` tinyint(1) NOT NULL COMMENT '类型',
+  `system` tinyint(4) NULL DEFAULT 0 COMMENT '是否系统任务',
+  `remark` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '备注',
+  `command` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '命令内容',
+  `params` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '参数',
+  `status` tinyint(1) NOT NULL DEFAULT 0 COMMENT '状态',
+  `expression` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '运行规则',
+  `error` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '运行失败原因',
+  `last_time` int(11) NULL DEFAULT NULL COMMENT '最后执行时间',
+  `time` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT '实时执行时长',
+  `max_time` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '0' COMMENT '最大执行时长',
+  `create_time` int(10) NULL DEFAULT NULL COMMENT '创建时间',
+  `update_time` int(10) NULL DEFAULT NULL COMMENT '更新时间',
+  `delete_time` int(10) NULL DEFAULT NULL COMMENT '删除时间',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '计划任务表';
+
+-- ----------------------------
+-- Records of __PREFIX__crontab
+-- ----------------------------
+
+
 SET FOREIGN_KEY_CHECKS = 1;
