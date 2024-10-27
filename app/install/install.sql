@@ -273,6 +273,12 @@ INSERT INTO `__PREFIX__admin_rules` VALUES (86, 85, '查看统计', '/system.Spi
 INSERT INTO `__PREFIX__admin_rules` VALUES (87, 85, '爬虫日志', '/system.Spider/getSpiderLog', 'system.Spider:getSpiderLog', 1, '', '', 87, '', 1, 'normal', 0, 1688481046, 1688481046, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (88, 85, '爬虫详情', '/system.Spider/getSpiderDetail', 'system.Spider:getSpiderDetail', 2, '', '', 88, '', 1, 'normal', 0, 1688481046, 1688481046, NULL);
 INSERT INTO `__PREFIX__admin_rules` VALUES (89, 85, '小时统计', '/system.Spider/hours', 'system.Spider:hours', 2, '', '', 89, '', 1, 'normal', 0, 1688481046, 1688481046, NULL);
+INSERT INTO `__PREFIX__admin_rules` VALUES (90, 5, '定时任务', '/system.Crontab/index', 'system.Crontab:index', 0, '', '', 90, '', 1, 'normal', 0, 1688481046, 1688481046, NULL);
+INSERT INTO `__PREFIX__admin_rules` VALUES (91, 90, '查看', '/system.Crontab/index', 'system.Crontab:index', 1, '', '', 91, '', 1, 'normal', 0, 1688481046, 1688481046, NULL);
+INSERT INTO `__PREFIX__admin_rules` VALUES (92, 90, '添加', '/system.Crontab/add', 'system.Crontab:add', 1, '', '', 92, '', 1, 'normal', 0, 1688481046, 1688481046, NULL);
+INSERT INTO `__PREFIX__admin_rules` VALUES (93, 90, '编辑', '/system.Crontab/edit', 'system.Crontab:edit', 1, '', '', 93, '', 1, 'normal', 0, 1688481046, 1688481046, NULL);
+INSERT INTO `__PREFIX__admin_rules` VALUES (94, 90, '删除', '/system.Crontab/del', 'system.Crontab:del', 1, '', '', 94, '', 1, 'normal', 0, 1688481046, 1688481046, NULL);
+INSERT INTO `__PREFIX__admin_rules` VALUES (95, 90, '状态', '/system.Crontab/status', 'system.Crontab:status', 2, '', '', 95, '', 1, 'normal', 0, 1688481046, 1688481046, NULL);
 
 -- ----------------------------
 -- Table structure for __PREFIX__attachment
